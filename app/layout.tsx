@@ -1,3 +1,5 @@
+"use client"
+import { ThemeProvider, useTheme } from '@emotion/react'
 import './globals.css'
 import { Inter } from 'next/font/google'
 
@@ -13,9 +15,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const theme = useTheme();
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <ThemeProvider theme={theme}>
+        {children}
+        </ThemeProvider>
+        </body>
     </html>
   )
 }
